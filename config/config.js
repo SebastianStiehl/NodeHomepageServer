@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'nodehomepageserver'
     },
-    port: 3000,
+    port: 8080
   },
 
   test: {
@@ -16,7 +16,7 @@ var config = {
     app: {
       name: 'nodehomepageserver'
     },
-    port: 3000,
+    port: 8080
   },
 
   production: {
@@ -24,7 +24,7 @@ var config = {
     app: {
       name: 'nodehomepageserver'
     },
-    port: 3000,
+    port: 8080
   }
 };
 

@@ -2,7 +2,8 @@
   "name": "NodeHomepageServer",
   "version": "0.0.1",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,23 @@
   "bugs": {
     "url": "https://github.com/SebastianStiehl/NodeHomepageServer/issues"
   },
-  "homepage": "https://github.com/SebastianStiehl/NodeHomepageServer"
+  "homepage": "https://github.com/SebastianStiehl/NodeHomepageServer",
+  "dependencies": {
+    "express": "^4.13.3",
+    "serve-favicon": "^2.3.0",
+    "morgan": "^1.6.1",
+    "cookie-parser": "^1.3.3",
+    "body-parser": "^1.13.3",
+    "compression": "^1.5.2",
+    "method-override": "^2.3.0",
+    "glob": "^5.0.3",
+    "nunjucks": "^2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.1",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-livereload": "^3.8.0",
+    "gulp-plumber": "^1.0.0"
+  }
 }
