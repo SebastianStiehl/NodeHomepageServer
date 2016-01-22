@@ -9,9 +9,5 @@ app.listen(config.port, function () {
 });
 
 process.on('SIGTERM', function () {
-  if (app === undefined) return;
-  app.close(function () {
-    // Disconnect from cluster master
-    process.disconnect && process.disconnect();
-  });
+  process.exit(0);
 });
