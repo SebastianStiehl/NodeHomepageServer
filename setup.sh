@@ -7,4 +7,8 @@ sudo apt-get install -y git
 sudo apt-get install -y npm
 
 git clone https://github.com/SebastianStiehl/NodeHomepageServer.git /var/www/NodeHomepageServer
-cp /var/www/NodeHomepageServer/etc/init/node-homepage-server.conf /etc/init/node-homepage-server.conf
+cd  /var/www/NodeHomepageServer
+cp ./etc/init/node-homepage-server.conf /etc/init/node-homepage-server.conf
+npm install
+
+start node-homepage-server
