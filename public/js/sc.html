@@ -1,0 +1,31 @@
+{{#favorites}}
+<li class="play{{#isPlaying}} playing{{/isPlaying}}" data-stream-index="{{index}}">
+  <div class="soundcloud"><a href="{{permalink_url}}" target="_blank"><i class="fa fa-soundcloud"></i> Soundcloud</a></div>
+  <img src="{{artwork_url}}" class="artwork" />
+  <h5>{{#isPlaying}}<i class="fa fa-play"></i>{{/isPlaying}} {{title}}</h5>
+  <ul class="parameter">
+    {{#durationMinutes}}
+    <li><i class="fa fa-clock-o"></i> {{durationMinutes}} min</li>
+    {{/durationMinutes}}
+    {{#playback_count}}
+    <li><i class="fa fa-user"></i> {{playback_count}}</li>
+    {{/playback_count}}
+    {{#favoritings_count}}
+    <li><i class="fa fa-heart"></i> {{favoritings_count}}</li>
+    {{/favoritings_count}}
+    {{#label_name}}
+    <li><i class="fa fa-cubes"></i> {{label_name}}</li>
+    {{/label_name}}
+    <li>
+      {{#purchase_url}}
+      <a href="{{purchase_url}}" target="_blank">
+        <i class="fa fa-shopping-cart"></i>
+      </a>
+      {{/purchase_url}}
+    </li>
+    {{#release_year}}
+    <li>{{release_year}} {{release_month}}</li>
+    {{/release_year}}
+  </ul>
+</li>
+{{/favorites}}

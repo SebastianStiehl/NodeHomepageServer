@@ -1,6 +1,86 @@
 {% extends 'layout.nunjucks' %}
 
 {% block content %}
-  <h1>{{ title }}</h1>
-  <p>Welcome to {{ title }}</p>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">stiehl.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Start</a></li>
+          <li></li>
+        </ul>
+
+        <div class="nav navbar-nav navbar-right">
+          <audio id="player" name="player" src="" controls="controls"></audio>
+        </div>
+
+      </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container-fluid">
+    <div class="hero-unit">
+      <h1>Sebastian Stiehl</h1>
+
+      <p>Homepage of a software developer from Berlin.</p>
+    </div>
+    <div id="index" class="page">
+      <div class="row-fluid">
+        <div class="span8">
+
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="https://www.facebook.com/Stiehl.Sebastian">Facebook</a></li>
+            <li><a href="https://twitter.com/5oc">Twitter</a></li>
+            <li><a href="https://plus.google.com/u/0/+SebastianStiehl/posts">Google+</a></li>
+          </ul>
+
+          <h2>Open Source</h2>
+          <ul>
+            <li><a href="http://immobilienscout24.github.io/CheckABox/">CheckABox - a jQuery plugin to replace html checkboxes and radio-buttons</a></li>
+            <li><a href="https://github.com/5oc">Github</a></li>
+            <li><a href="https://stackoverflow.com/users/1090267/soc">Stackoverflow</a></li>
+          </ul>
+
+          <h2>Tools</h2>
+          <ul>
+            <li><a href="./tools/clientInfo.html">client informations</a></li>
+            <li><a href="./tools/compareTwoColors.html">compare two colors</a></li>
+            <li><a href="./tools/iframes.html">observe iframes</a></li>
+            <li><a href="./tools/HARVisualizer">HAR Visualizer</a></li>
+          </ul>
+
+        </div>
+
+        <div class="span8">
+          <h2>My Soundcloud Favorites <span style="color: red;">&hearts;</span></h2>
+          <ul id="musicList">
+            <li><h5>loading..</h5></li>
+          </ul>
+          <a href="https://soundcloud.com/5oc/likes" target="_blank">... more on SC</a>
+        </div>
+      </div>
+
+      <footer>
+        <a href="../prototypes" rel="nofollow">&nbsp;</a>
+      </footer>
+    </div>
+    <div id="back"></div>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="/js/sc.js"></script>
 {% endblock %}

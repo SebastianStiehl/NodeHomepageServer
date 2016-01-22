@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html data-ng-app="iframes">
+<head>
+  <title>iframes</title>
+  <style>
+    /*
+      Reset css
+      http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
+    */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
+    /* custom css */
+
+    body {
+      font-family: Verdana, Arial;
+    }
+
+    .iframeContainer {
+      float: left;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+      border: 1px solid #444;
+    }
+
+    .iframeContainer:nth-child(even) {
+      border-left: none;
+    }
+
+    .iframeContainer:nth-child(n+3) {
+      border-top: none;
+    }
+
+    .iframeContainer h3 {
+      font-size: 0.8em;
+      margin: 8px;
+      padding: 3px 6px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #ccc;
+      opacity: 0.2;
+      border-radius: 6px;
+    }
+
+    .iframeContainer h3:hover {
+      opacity: 1;
+      color: white;
+    }
+
+    .iframeContainer iframe {
+      width: 100%;
+      height: 100%;
+
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    (function () {
+      var app, storageKey = "iframesApp";
+
+      // Array Remove - By John Resig (MIT Licensed)
+      Array.prototype.remove = function (from, to) {
+        var rest = this.slice((to || from) + 1 || this.length);
+        this.length = from < 0 ? this.length + from : from;
+        return this.push.apply(this, rest);
+      };
+
+      app = angular.module('iframes', []);
+      app.controller("main", function ($scope, $sce, $interval) {
+        var lastIframeId;
+
+        function calcHeight(iframesLength) {
+          var borderSize = 2;
+          return ( ($(window).height() - $(".controlls").height()) / Math.round(iframesLength / 2)) - borderSize;
+        }
+
+        function writeStorage() {
+          var cleanObject = angular.copy($scope.iframes);
+          localStorage[storageKey] = JSON.stringify(cleanObject);
+        }
+
+        function readStorage() {
+          var storage = localStorage[storageKey];
+
+          if (storage) {
+            storage = JSON.parse(storage);
+            angular.forEach(storage, function (item) {
+              item.src = $sce.trustAsResourceUrl(item.origSrc);
+            });
+          } else {
+            storage = [];
+          }
+
+          return storage;
+        }
+
+        function applyHeight(scope, newIframeHeight) {
+          scope.iframes.forEach(function (frame) {
+            frame.height = newIframeHeight;
+          });
+        }
+
+        function setNewHeights() {
+          var newIframeHeight = calcHeight($scope.iframes.length);
+          applyHeight($scope, newIframeHeight);
+        }
+
+        function recalcLayout() {
+          setNewHeights();
+          writeStorage();
+        }
+
+        $scope.addIframe = function () {
+          var name, address;
+
+          while(!name) {
+            name = prompt("Iframe Name:", "");
+          }
+
+          while (!address) {
+            address = prompt("Iframe Address:", "http://");
+          }
+
+          $scope.iframes.push({
+            id: ++lastIframeId,
+            name: name,
+            src:  $sce.trustAsResourceUrl(address),
+            origSrc:  address
+          });
+
+          recalcLayout();
+        };
+
+        $scope.deleteAllIframes = function () {
+          $scope.iframes = [];
+          writeStorage();
+        };
+
+        $scope.deleteIframe = function (id) {
+          var idToDelete, additionalText = "";
+
+          if (!id) {
+            idToDelete = prompt("Iframe id to delete " + additionalText, "");
+            idToDelete = parseInt(idToDelete, 10);
+          } else {
+            idToDelete = id;
+          }
+
+          angular.forEach($scope.iframes, function (frame, index) {
+            if (frame.id === idToDelete) {
+              $scope.iframes.remove(index);
+            }
+          });
+
+          recalcLayout();
+        };
+
+        $scope.iframes = readStorage();
+        lastIframeId = ($scope.iframes.length > 0) ? ($scope.iframes[$scope.iframes.length - 1].id) : 0;
+        recalcLayout();
+
+        $(window).on("resize", function () {
+          $scope.$apply(function () {
+            recalcLayout();
+          });
+        });
+
+        $interval(function () {
+            angular.forEach($scope.iframes, function (frame) {
+              frame.src = $sce.trustAsResourceUrl(frame.origSrc + "?time=" + new Date().getTime());
+            });
+        }, 5000);
+      });
+
+    }());
+  </script>
+</head>
+<body data-ng-controller="main">
+  <section class="controlls">
+    <button data-ng-click="addIframe()">add frame</button>
+    <button data-ng-click="deleteAllIframes()">del all</button>
+  </section>
+  <section  class="framesSection">
+    <div data-ng-repeat="iframe in iframes" class="iframeContainer" style="height: {{iframe.height}}px;">
+      <h3>{{iframe.id}}. {{iframe.name}} <button data-ng-click="deleteIframe(iframe.id)">del</button></h3>
+      <iframe src="{{iframe.src}}" ></iframe>
+    </div>
+  </section>
+</body>
+</html>

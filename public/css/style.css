@@ -6,59 +6,48 @@
   width: 100%;
   height: 2000px;
 }
-
 h2 {
   font-size: 1.7em;
   margin-top: 1.7em;
 }
-
 .navbar-default .navbar-brand {
   text-shadow: none;
   color: #eee;
 }
-
 .navbar-default .navbar-brand:hover {
   color: #e1e1e1;
 }
-
 .navbar-default {
   background-color: #409de6;
   background-image: none;
 }
-
 .navbar {
   z-index: 30;
   margin-bottom: 0;
   position: fixed;
   width: 100%;
 }
-
 .navbar .nav > li > a {
   color: #ccc;
 }
-
 .navbar .nav > li > a {
   text-shadow: none;
 }
-
 .row-fluid > div {
   padding: 0 25px;
 }
-
 footer {
   color: #999;
   padding: 8px 12px;
   font-size: 0.8em;
   text-align: right;
 }
-
 .page,
 footer,
 .hero-unit {
   z-index: 20;
   position: relative;
 }
-
 .page {
   background-color: rgba(255, 255, 255, 0.49);
   border-radius: 15px;
@@ -66,7 +55,6 @@ footer,
   overflow: hidden;
   margin: 25px 0;
 }
-
 .hero-unit {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -74,101 +62,80 @@ footer,
   padding: 25px 30px;
   margin-top: 70px;
   color: #333;
-  background-color: rgb(250, 250, 250);
+  background-color: #fafafa;
 }
-
 .hero-unit h1 {
   font-size: 36px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
-.listItems() {
+#musicList {
+  background-color: #fff;
   list-style-type: none;
   padding: 0;
   overflow: hidden;
 }
-
-#musicList {
-  background-color: #fff;
-  .listItems;
-
-  & > li {
-    overflow: hidden;
-    padding: 2px;
-
-  }
-
-  & > li:nth-child(even) {
-    background-color: #fbfbfb;
-  }
-
-  & > li.playing,
-  & > li:hover {
-    background-color: #f3f3f3;
-  }
-
-  & > li i {
-    margin-right: 1px;
-  }
-
-  img {
-    width: 50px;
-    height: 50px;
-    font-size: 2em;
-    margin: 5px 15px 5px 5px;
-    float: left;
-    border-radius: 25px;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .play {
-    cursor: pointer;
-  }
-
-  .soundcloud {
-    float: right;
-    padding: 10px;
-  }
-
-  .playing {
-    h5 {
-      color: rgb(64, 157, 230);
-    }
-    .artwork {
-      -webkit-animation: fa-spin 10s infinite linear;
-      animation: fa-spin 10s infinite linear;
-    }
-
-  }
-
-  .parameter {
-    .listItems;
-    font-size: 0.8em;
-
-    li {
-      float: left;
-      color: #708298;
-      margin-right: 15px;
-
-    }
-
-    a {
-      color: #999;
-    }
-  }
+#musicList > li {
+  overflow: hidden;
+  padding: 2px;
 }
-
+#musicList > li:nth-child(even) {
+  background-color: #fbfbfb;
+}
+#musicList > li.playing,
+#musicList > li:hover {
+  background-color: #f3f3f3;
+}
+#musicList > li i {
+  margin-right: 1px;
+}
+#musicList img {
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+  margin: 5px 15px 5px 5px;
+  float: left;
+  border-radius: 25px;
+}
+#musicList a {
+  text-decoration: none;
+}
+#musicList .play {
+  cursor: pointer;
+}
+#musicList .soundcloud {
+  float: right;
+  padding: 10px;
+}
+#musicList .playing h5 {
+  color: #409de6;
+}
+#musicList .playing .artwork {
+  -webkit-animation: fa-spin 10s infinite linear;
+  animation: fa-spin 10s infinite linear;
+}
+#musicList .parameter {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  font-size: 0.8em;
+}
+#musicList .parameter li {
+  float: left;
+  color: #708298;
+  margin-right: 15px;
+}
+#musicList .parameter a {
+  color: #999;
+}
 @media (min-width: 979px) {
-  .container-fluid, .navbar-static-top .container-fluid, .navbar-fixed-top .container-fluid, .navbar-fixed-bottom .container-fluid {
+  .container-fluid,
+  .navbar-static-top .container-fluid,
+  .navbar-fixed-top .container-fluid,
+  .navbar-fixed-bottom .container-fluid {
     width: 800px;
   }
 }
-
 #player {
   display: none;
   margin: 9px;
 }
-
