@@ -21,6 +21,8 @@ module.exports = function (app, config) {
     express: app
   });
 
+  app.set('x-powered-by', false);
+
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
   app.use(bodyParser.json());

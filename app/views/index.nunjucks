@@ -1,41 +1,14 @@
 {% extends 'layout.nunjucks' %}
 
 {% block content %}
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">stiehl.io</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Start</a></li>
-          <li></li>
-        </ul>
-
-        <div class="nav navbar-nav navbar-right">
-          <audio id="player" name="player" src="" controls="controls"></audio>
-        </div>
-
-      </div><!-- /.navbar-collapse -->
-
-    </div><!-- /.container-fluid -->
-  </nav>
 
   <div class="container-fluid">
+
     <div class="hero-unit">
       <h1>Sebastian Stiehl</h1>
-
       <p>Homepage of a software developer from Berlin.</p>
     </div>
+
     <div id="index" class="page">
       <div class="row-fluid">
         <div class="span8">
@@ -74,11 +47,12 @@
       </div>
 
       <footer>
-        <a href="../prototypes" rel="nofollow">&nbsp;</a>
+
       </footer>
     </div>
     <div id="back"></div>
   </div>
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>

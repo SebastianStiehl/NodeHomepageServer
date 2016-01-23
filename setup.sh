@@ -1,14 +1,13 @@
 #!/bin/bash
 
 sudo apt-get -y update
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo apt-get install -y git
-sudo apt-get install -y npm
+sudo apt-get install nodejs
+sudo apt-get install npm
+sudo apt-get install git
 
 git clone https://github.com/SebastianStiehl/NodeHomepageServer.git /var/www/NodeHomepageServer
 cd  /var/www/NodeHomepageServer
-cp ./etc/init/node-homepage-server.conf /etc/init/node-homepage-server.conf
 npm install
 
+cp ./etc/init/node-homepage-server.conf /etc/init/node-homepage-server.conf
 start node-homepage-server
