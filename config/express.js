@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var nunjucks = require('nunjucks');
+var dateFilter = require('nunjucks-date-filter');
 
 module.exports = function (app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -16,10 +17,12 @@ module.exports = function (app, config) {
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'nunjucks');
-  nunjucks.configure(config.root + '/app/views', {
+  var nunjucksEnv = nunjucks.configure(config.root + '/app/views', {
     autoescape: true,
     express: app
   });
+
+  nunjucksEnv.addFilter('date', dateFilter);
 
   app.set('x-powered-by', false);
 

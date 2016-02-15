@@ -1,0 +1,65 @@
+{% extends 'layout.nunjucks' %}
+
+{% block content %}
+
+<style>
+  .record-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .record-list li:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  .record-list li {
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .record-list a {
+    text-decoration: none;
+    color: #222;
+  }
+
+  .record-list img {
+    height: 200px;
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .record-details {
+    font-size: 16px;
+  }
+  .record-title {
+    font-size: 24px;
+    font-weight: 400;
+  }
+</style>
+
+<div class="container-fluid">
+
+  <div class="hero-unit">
+    <h1>Hardwax Rss Feed</h1>
+  </div>
+
+  {% if error or code %}
+    <h2>Error: {{error}} {{code}}</h2>
+  {% endif %}
+
+  <ul class="record-list">
+    {% for record in records %}
+      <li>
+        <a href="{{record.link}}" target="_blank">
+          <img src="{{record.image}}" />
+          <div class="record-title">{{record.title}} <span class="record-details">({{record.label}})</span></div>
+          <div class="record-details">{{record.note}} </div>
+          <div class="record-details">{{record.pubDate | date("DD.MM.YY") }}</div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+{% endblock %}
